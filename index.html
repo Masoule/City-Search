@@ -28,9 +28,17 @@
     return cities.filter( place =>  
     place.city.match(regex) || place.state.match(regex)
   )}
-
   
-     
+  function displayResults() {
+    console.log(this.value);
+  }
+
+  searchInput = document.querySelector('.search');
+  results = document.querySelector('.suggestions');
+  
+  searchInput.addEventListener('change', displayResults);
+  searchInput.addEventListener('keyup', displayResults);
+  
 </script>
   </body>
 </html>

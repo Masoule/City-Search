@@ -30,7 +30,14 @@
   )}
   
   function displayResults() {
-    console.log(this.value);
+    const resultsArr = search(this.value, cities);
+    const html = resultsArr.map( place => 
+      `<li>
+      <span class='name'>${place.city}, ${place.state}</span>
+      <span class='population'>${place.population}</span>
+      </li>`
+    ).join('')
+    results.innerHTML = html;
   }
 
   searchInput = document.querySelector('.search');

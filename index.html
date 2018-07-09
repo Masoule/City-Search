@@ -31,12 +31,15 @@
   
   function displayResults() {
     const resultsArr = search(this.value, cities);
-    const html = resultsArr.map( place => 
-      `<li>
-      <span class='name'>${place.city}, ${place.state}</span>
+    const html = resultsArr.map( place => {
+      const searchTerm = new RegExp(this.value, 'gi');
+      const highlightedCity = place.city.replace(searchTerm, `<span class='hl'>${this.value}</span>`)
+      const highlightedState = place.state.replace(searchTerm, `<span class='hl'>${this.value}</span>`)
+      return `<li>
+      <span class='name'>${highlightedCity}, ${highlightedState}</span>
       <span class='population'>${place.population}</span>
       </li>`
-    ).join('')
+    }).join('')
     results.innerHTML = html;
   }
 

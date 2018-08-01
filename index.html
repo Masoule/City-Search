@@ -20,17 +20,27 @@
       const event = e.type;
       ( event == 'dragenter' || event == 'dragover') ? dropArea.classList.add('highlight') : dropArea.classList.remove('highlight')
       if ( event == 'drop' ) {
-        [...e.dataTransfer.files].forEach( file => handleFile() )
+        let files = e.dataTransfer.files;
+        handleFile(files);
       }
     }
     
-    function handleFile(file) {
-      upload(file);
-      preview(file);
+    function handleFile(files) {
+      [...files].forEach( file => {
+        upload(file);
+        preview(file);
+      })
     }
 
     function preview(file) {
-      
+      let reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onloadend = () => {
+        let preview = document.createElement('img')
+        preview.height = 100;
+        preview.src = reader.result;
+        document.querySelector('div').appendChild(preview)
+      }
     }
     
     function upload(file) {
@@ -52,12 +62,16 @@
       margin: auto;
       padding: 10px;
       width: 90%;
-      height: 300px;
+      min-height: 300px;
       border: 1px solid black;
     }    
     
     .highlight {
       border-color: red;
+    }
+    
+    img {
+      margin: 10px;
     }
     
     

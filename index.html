@@ -16,6 +16,9 @@
     
     function handleDrop(e) {
       e.preventDefault();
+      e.stopPropagation();
+      const event = e.type;
+      ( event == 'dragenter' || event == 'dragover') ? dropArea.classList.add('highlight') : dropArea.classList.remove('highlight')
   
     console.log(e)
     }
@@ -37,7 +40,10 @@
       height: 300px;
       border: 1px solid black;
     }    
-
+    
+    .highlight {
+      border-color: red;
+    }
     
     
   </style>

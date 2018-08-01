@@ -19,9 +19,24 @@
       e.stopPropagation();
       const event = e.type;
       ( event == 'dragenter' || event == 'dragover') ? dropArea.classList.add('highlight') : dropArea.classList.remove('highlight')
-  
-    console.log(e)
+      if ( event == 'drop' ) {
+        [...e.dataTransfer.files].forEach( file => handleFile() )
+      }
     }
+    
+    function handleFile(file) {
+      upload(file);
+      preview(file);
+    }
+
+    function preview(file) {
+      
+    }
+    
+    function upload(file) {
+      console.log('hi')
+    }
+    
     
     dropArea.addEventListener('drop', handleDrop)
     dropArea.addEventListener('dragenter', handleDrop)

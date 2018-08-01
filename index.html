@@ -6,7 +6,7 @@
 </head>
 
 <body>
-  <h2>Upload something</h2>
+  <h2>Upload Your Files</h2>
   <div class="drop-area">
     <p>Drop your files in this area to upload</p>
   </div>
@@ -46,24 +46,32 @@
     function upload(file) {
       console.log('hi')
     }
-    
-    
-    dropArea.addEventListener('drop', handleDrop)
+      
     dropArea.addEventListener('dragenter', handleDrop)
-    dropArea.addEventListener('dragleave', handleDrop)
     dropArea.addEventListener('dragover', handleDrop)
+    dropArea.addEventListener('dragleave', handleDrop)
+    dropArea.addEventListener('drop', handleDrop)
     
     
   </script>
   
   <style media="screen"> 
-   
+    
+    body {
+      background-color: #e1e5ed;
+    } 
+    
+    p {
+      margin: 0;
+    }
+     
     .drop-area {
       margin: auto;
       padding: 10px;
       width: 90%;
       min-height: 300px;
       border: 1px solid black;
+      background-color: white;
     }    
     
     .highlight {

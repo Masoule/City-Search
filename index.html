@@ -2,53 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Type Ahead 👀</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Drag and Upload</title>
 </head>
+
 <body>
+  <h2>Upload something</h2>
+  <div class="drop-area">
+    <p>Drop your files in this area to upload</p>
+  </div>
 
-  <form class="search-form">
-    <input type="text" class="search" placeholder="City or State">
-    <ul class="suggestions">
-      <li>Filter for a city</li>
-      <li>or a state</li>
-    </ul>
-  </form>
-<script>
-  const cities = [];
-  const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+  <script>
 
-  fetch(endpoint)
-    .then( response => response.json())
-    .then( data => cities.push(...data)) 
     
+    
+  </script>
   
-  function search(keyword, cities) { 
-    const regex = new RegExp(keyword, 'gi')   
-    return cities.filter( place =>  
-    place.city.match(regex) || place.state.match(regex)
-  )}
-  
-  function displayResults() {
-    const resultsArr = search(this.value, cities);
-    const html = resultsArr.map( place => {
-      const searchTerm = new RegExp(this.value, 'gi');
-      const highlightedCity = place.city.replace(searchTerm, `<span class='hl'>${this.value}</span>`)
-      const highlightedState = place.state.replace(searchTerm, `<span class='hl'>${this.value}</span>`)
-      return `<li>
-      <span class='name'>${highlightedCity}, ${highlightedState}</span>
-      <span class='population'>${place.population}</span>
-      </li>`
-    }).join('')
-    results.innerHTML = html;
-  }
+  <style media="screen"> 
+   
 
-  searchInput = document.querySelector('.search');
-  results = document.querySelector('.suggestions');
-  
-  searchInput.addEventListener('change', displayResults);
-  searchInput.addEventListener('keyup', displayResults);
-  
-</script>
+    
+    
+  </style>
   </body>
 </html>
